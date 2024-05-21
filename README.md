@@ -1,41 +1,15 @@
-SIMULATION AND IMPLEMENTATION OF  COMBINATIONAL LOGIC CIRCUITS
+# EXP.NO.02
+# DATE:27/02/2024
+# SIMULATION AND IMPLEMENTATION OF  COMBINATIONAL LOGIC CIRCUITS
 
-AIM: 
+# AIM: 
  To simulate and synthesis ENCODER, DECODER, MULTIPLEXER, DEMULTIPLEXER, MAGNITUDE COMPARATOR using Xilinx ISE.
 
-APPARATUS REQUIRED:
+# APPARATUS REQUIRED:
 Xilinx 14.7
 Spartan6 FPGA
-
-**LOGIC DIAGRAM**
-
-ENCODER
-
-![image](https://github.com/navaneethans/VLSI-LAB-EXP-2/assets/6987778/3cd1f95e-7531-4cad-9154-fdd397ac439e)
-
-
-DECODER
-
-![image](https://github.com/navaneethans/VLSI-LAB-EXP-2/assets/6987778/45a5e6cf-bbe0-4fd5-ac84-e5ad4477483b)
-
-
-MULTIPLEXER
-
-![image](https://github.com/navaneethans/VLSI-LAB-EXP-2/assets/6987778/427f75b2-8e67-44b9-ac45-a66651787436)
-
-
-DEMULTIPLEXER
-
-![image](https://github.com/navaneethans/VLSI-LAB-EXP-2/assets/6987778/1c45a7fc-08ac-4f76-87f2-c084e7150557)
-
-
-MAGNITUDE COMPARATOR
-
-![image](https://github.com/navaneethans/VLSI-LAB-EXP-2/assets/6987778/b2fe7a05-6bf7-4dcb-8f5d-28abbf7ea8c2)
-
-
-  
-PROCEDURE:
+# PROCEDURE:
+```
 STEP:1  Start  the Xilinx navigator, Select and Name the New project.
 STEP:2  Select the device family, device, package and speed.       
 STEP:3  Select new source in the New Project and select Verilog Module as the Source type.                       
@@ -47,9 +21,12 @@ STEP:8  Select Check Syntax from the Synthesize  XST Process. Double Click in th
 STEP:9  In the Design Object List Window, enter the pin location for each pin in the Loc column Select save from the File menu.
 STEP:10 Double click on the Implement Design and double click on the Generate Programming File to create a bitstream of the design.(.v) file is converted into .bit file here.
 STEP:11  On the board, by giving required input, the LEDs starts to glow light, indicating the output.
+```
 
-VERILOG CODE
-# ENCODER:
+# ENCODER
+
+![image](https://github.com/navaneethans/VLSI-LAB-EXP-2/assets/6987778/3cd1f95e-7531-4cad-9154-fdd397ac439e)
+# CODE:
 ```
 module encoder(d,a,b,c);
 input [7:0]d;
@@ -59,8 +36,13 @@ or(b,d[2],d[3],d[6],d[7]);
 or(c,d[1],d[3],d[5],d[7]);
 endmodule
 ```
+# OUTPUT:
+![image](https://github.com/THARUN729/VLSI-LAB-EXP-2/assets/161407766/66f10c69-e6ca-4d91-8556-a96436319a61)
 
-# DECODER:
+# DECODER
+
+![image](https://github.com/navaneethans/VLSI-LAB-EXP-2/assets/6987778/45a5e6cf-bbe0-4fd5-ac84-e5ad4477483b)
+# CODE:
 ```
 module decoder_8(a,b,c,y);
 input a,b,c; 
@@ -75,8 +57,12 @@ and g7(y[6], (a), (b), (~c));
 and g8(y[7], (a), (b), (c));
 endmodule
 ```
+# OUTPUT:
+![image](https://github.com/THARUN729/VLSI-LAB-EXP-2/assets/161407766/c19a5085-1e16-44fe-946b-dff35a2dad3c)
 
-# MULTIPLEXER:
+# MULTIPLEXER
+![image](https://github.com/navaneethans/VLSI-LAB-EXP-2/assets/6987778/427f75b2-8e67-44b9-ac45-a66651787436)
+# CODE:
 ```
 module mux(a,b,c,d,s0,s1,y);
 input a,b,c,d,s0,s1;
@@ -84,7 +70,12 @@ output y;
 assign y=s1 ?(s0?d:c):(s0?b:a);
 endmodule
 ```
-# DEMULTIPLEXER:
+# OUTPUT:
+![image](https://github.com/THARUN729/VLSI-LAB-EXP-2/assets/161407766/a958e2bf-c238-49f0-82b9-938340513df3)
+
+# DEMULTIPLEXER
+![image](https://github.com/navaneethans/VLSI-LAB-EXP-2/assets/6987778/1c45a7fc-08ac-4f76-87f2-c084e7150557)
+# CODE:
 ```
 module demux(in,s0,s1,s2,d0,d1,d2,d3,d4,d5,d6,d7);
 input in,s0,s1,s2;
@@ -99,8 +90,12 @@ d6=(in & s2 & s1 &~s0),
 d7=(in & s2 & s1 &s0);
 endmodule
 ```
+# OUTPUT:
+![image](https://github.com/THARUN729/VLSI-LAB-EXP-2/assets/161407766/49b2864d-51c2-49cb-8dad-8dc9ac16027a)
 
-# MAGNITUDE COMPARATOR:
+# MAGNITUDE COMPARATOR
+![image](https://github.com/navaneethans/VLSI-LAB-EXP-2/assets/6987778/b2fe7a05-6bf7-4dcb-8f5d-28abbf7ea8c2)
+# CODE:
 ```
 module magcomp(a,b,l,g,e);
 input [3:0]a,b;
@@ -128,30 +123,10 @@ end
 end
 endmodule
 ```
-
-OUTPUT WAVEFORM
-# ENCODER:
-![image](https://github.com/THARUN729/VLSI-LAB-EXP-2/assets/161407766/66f10c69-e6ca-4d91-8556-a96436319a61)
-
-# DECODER:
-![image](https://github.com/THARUN729/VLSI-LAB-EXP-2/assets/161407766/c19a5085-1e16-44fe-946b-dff35a2dad3c)
-
-# MULTIPLEXER:
-![image](https://github.com/THARUN729/VLSI-LAB-EXP-2/assets/161407766/a958e2bf-c238-49f0-82b9-938340513df3)
-
-# DEMULTIPLEXER:
-![image](https://github.com/THARUN729/VLSI-LAB-EXP-2/assets/161407766/49b2864d-51c2-49cb-8dad-8dc9ac16027a)
-
-# MAGNITUDE COMPARATOR:
+# OUTPUT:
 ![image](https://github.com/THARUN729/VLSI-LAB-EXP-2/assets/161407766/06fa912f-e738-4e4a-a2ca-22e554e2c4d3)
 
-
-
-
-
- 
-
-RESULT
+# RESULT
 Hence ENCODER, DECODER, MULTIPLEXER, DEMULTIPLEXER, MAGNITUDE COMPARATOR is stimulated and synthesised using vivado
 
 
